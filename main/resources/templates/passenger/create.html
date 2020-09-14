@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sirs-Airlines</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        form{
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 500px;
+            padding-right: 0px;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        input[type=text],[type=number], select {
+            width:50%;
+            padding: 15px 20px;
+            margin: 15px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+        }
+        label{
+            font-variant: small-caps;
+            font-size: medium;
+        }
+        input[type=submit] {
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <a href="#" class="nav"><b> Sirs-Arlines </b></a>
+</nav>
+<h2> Create Passenger </h2>
+<form method="post" th:action="${'/passengers/add'}">
+    <div>
+        <label> Last Name</label>
+        <input type="text" name="lastName" id="lastName" required>
+    </div>
+    <div>
+        <label>First_Name</label>
+        <input type="text" name="firstName" id="firstName" required>
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="text" name="email" id="email" required>
+    </div>
+    <div>
+        <label>Phone</label>
+        <input type="number" name="phone" id="phone" required>
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="number" name="age" id="age" required>
+    </div>
+    <div>
+        <label>Address</label>
+        <input type="text" name="address" id="address" required>
+    </div>
+
+    <div>
+        <input type="submit" name="savePassenger" id="savePassenger">
+    </div>
+</form>
+
+</body>
+
+</html>

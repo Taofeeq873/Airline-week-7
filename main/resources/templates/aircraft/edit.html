@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Airline</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        form{
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 500px;
+            padding-right: 0px;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        input[type=text],[type=number], select {
+            width:50%;
+            padding: 15px 20px;
+            margin: 15px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+        }
+        label{
+            font-variant: small-caps;
+            font-size: medium;
+        }
+        input[type=submit] {
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <a href="#" class="nav"><b> Sirs-Arlines </b></a>
+</nav>
+<h2> Edit Aircraft </h2>
+
+    <form action="#" th:object="${aircraft}" th:action="${'/aircrafts/update'}"  method="post">
+
+        <input type="hidden"  th:field="*{id}" name="id">
+
+        <div>
+            <label>Registration Number:</label>
+            <input type="text"  placeholder="Reg_No" name="registrationNumber" th:field="*{registrationNumber}" readonly/>
+        </div>
+
+        <div>
+            <label>Name:</label>
+            <input type="text" placeholder="Aircraft Name" name="name" th:field="*{name}"/>
+        </div>
+
+        <div>
+            <label>Model:</label>
+            <input type="text" placeholder="Model"  name="type" th:field="*{type}"/>
+        </div>
+
+
+        <div>
+            <label>Capacity:</label>
+            <input type="number" placeholder="Capacity" name="capacity" th:field="*{capacity}"/>
+        </div>
+
+        <div>
+            <input type="submit" name="saveAircraft" id="saveAircraft">
+        </div>
+    </form>
+</body>
+</html>

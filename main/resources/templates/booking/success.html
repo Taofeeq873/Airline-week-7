@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title></title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        table {
+            padding-top: 70px;
+            border-collapse: collapse;
+            width: 90%;
+            margin: auto;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+            height:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        th {
+            background-color: royalblue;
+            color: white;
+            height:50px;
+        }
+        input[type=submit], button{
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <a href="#" class="nav"><b> Sirs-Arlines </b></a>
+</nav>
+<h2> Booking Summary</h2>
+<table>
+
+    <tr>
+        <td>First_Name</td>
+        <td th:text="${passenger.getFirstName()}"></td>
+    </tr>
+    <tr>
+        <td>Last_Name</td>
+        <td th:text="${passenger.getLastName()}"></td>
+    </tr>
+    <tr>
+        <td>Booking_Number</td>
+        <td th:text="${booking.getBookingNumber()}"></td>
+    </tr>
+    <tr>
+        <td>Flight_Number</td>
+        <td th:text="${flight.getFlightNumber()}"></td>
+    </tr>
+    <tr>
+        <td>TakeOffTime</td>
+        <td th:text="${flight.getTakeOffTime()}"></td>
+    </tr>
+    <tr>
+        <td>TakeOffPoint</td>
+        <td th:text="${flight.getTakeOffPoint()}"></td>
+    </tr>
+    <tr>
+        <td>Destination</td>
+        <td th:text="${flight.getDestinationPoint()}"></td>
+    </tr>
+    <tr>
+        <td>Seat_No.</td>
+        <td th:text="${booking.getSeatNo()}"></td>
+    </tr>
+</table>
+
+</body>
+
+</html>
+
+

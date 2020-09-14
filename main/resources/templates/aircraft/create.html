@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sirs-Airlines</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        .dropbtn {
+            background-color: royalblue;
+            color: white;
+            /*padding: 16px;*/
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        form{
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 500px;
+            padding-right: 0px;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        input[type=text],[type=number], select {
+            width:50%;
+            padding: 15px 20px;
+            margin: 15px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+        }
+        label{
+            font-variant: small-caps;
+            font-size: medium;
+        }
+        input[type=submit] {
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="navigation">
+    <div class="dropdown">
+        <button class="dropbtn"> <a href="#" class="nav-link">Aircraft</a> </button>
+        <div class="dropdown-content">
+            <a th:href="@{/aircrafts/create}">Create Aircraft</a>
+            <a  th:href="@{/aircrafts/list}">List Aircraft</a>
+            <!--<a href="#">Link 3</a>-->
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Booking</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/bookings/create}">Create Booking</a>
+            <a  th:href="@{/bookings/list}">List Bookings</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Flight</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/flights/create/{id}}">Create Flight</a>
+            <a th:href="@{/flights/list}">List Flights</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Passenger</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/passengers/create}">Create Passenger</a>
+            <a  th:href="@{/passengers/list}">List Passengers</a>
+        </div>
+    </div>
+</nav>
+<h2> Create Aircraft </h2>
+<form method="post" th:action="${'/aircrafts/add'}">
+    <div>
+        <label> Name</label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div>
+        <label>Registration Number</label>
+        <input type="text" name="registrationNumber" id="registrationNumber" required>
+    </div>
+    <div>
+        <label>Capacity</label>
+        <input type="number" name="capacity" id="capacity" required>
+    </div>
+    <div>
+        <label>Type</label>
+        <input type="text" name="type" id="type" required>
+    </div>
+
+    <div>
+        <input type="submit" name="saveAircraft" id="saveAircraft">
+    </div>
+</form>
+
+</body>
+</html>

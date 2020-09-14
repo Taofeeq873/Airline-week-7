@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sirs Airlines-Ready To Fly</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/page.css}">
+        <style>
+            body {
+                background-color: #d3d3d3;
+                margin: 0;
+                padding: 0;
+            }
+            .dropbtn {
+                background-color: royalblue;
+                color: white;
+                /*padding: 16px;*/
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {
+                background-color: #f1f1f1
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            /*.dropdown:hover .dropbtn {
+                background-color: #3e8e41;
+            }*/
+            nav{
+                background: royalblue;
+                width: 1340px;
+                padding: 15px;
+                font-variant: small-caps;
+            }
+            nav .nav{
+                color: #f2f2f2;
+                text-decoration: none;
+                text-align: center;
+            }
+            h2{
+                font-variant: small-caps;
+                text-align: center;
+            }
+            h3{
+                font-variant: small-caps;
+                text-align: center;
+            }
+            nav .nav-link{
+                margin: 9px;
+                color: white;
+                text-decoration: none;
+                padding: 5px;
+                font-variant: small-caps;
+                text-align: right;
+            }
+            .nav-link:hover{
+                background-color: white;
+                color: cadetblue;
+            }
+            p{
+                font-variant: small-caps;
+                text-align: center;
+            }
+            /*form{
+                margin-right: auto;
+                margin-left: auto;
+                padding-left: 500px;
+                padding-right: 0px;
+            }*/
+            /*input[type=text],[type=number], select,[type=date] {
+                width:40%;
+                padding: 15px 20px;
+                margin: 15px 0;
+                display: block;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+                box-sizing: border-box;
+
+            }
+            label{
+                font-variant: small-caps;
+                font-size: medium;
+            }
+            input[type=submit] {
+                width: 20%;
+                background-color: royalblue;
+                color: white;
+                padding: 14px 20px;
+                margin: 15px 0;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+            }*/
+        </style>
+    </head>
+<body>
+<nav class="navigation">
+    <div class="dropdown">
+        <button class="dropbtn"> <a href="#" class="nav-link">Aircraft</a> </button>
+        <div class="dropdown-content">
+            <a th:href="@{/aircrafts/create}">Create Aircraft</a>
+            <a  th:href="@{/aircrafts/list}">List Aircraft</a>
+            <!--<a href="#">Link 3</a>-->
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Booking</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/bookings/create}">Create Booking</a>
+            <a  th:href="@{/bookings/list}">List Bookings</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Flight</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/flights/create/{id}}">Create Flight</a>
+            <a th:href="@{/flights/list}">List Flights</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn"><a href="#" class="nav-link">Passenger</a></button>
+        <div class="dropdown-content">
+            <a  th:href="@{/passengers/create}">Create Passenger</a>
+            <a  th:href="@{/passengers/list}">List Passengers</a>
+        </div>
+    </div>
+</nav>
+ <div class="img">
+    <img th:src="@{/images/marquee.jpg}" alt="home">
+ </div>
+<div class="you">
+    <div class="tab">
+        <button class="tablinks" onclick="openCity(event, 'London')">Search Flights</button>
+        <button class="tablinks" onclick="openCity(event, 'Paris')">Manage Booking</button>
+        <button class="tablinks" onclick="openCity(event, 'Tokyo')">What's on Your Flight </button>
+        <button class="tablinks" onclick="openCity(event, 'Abuja')">Flight Status</button>
+    </div>
+
+
+    <div id="London" class="tabcontent">
+        <form  th:action="${'/flights/availableFlights'}" method="get" class="no">
+            <select type="text"  class="form-controls" placeholder="Depature AirPort"  name="takeOffPoint" id="so" required>
+                <option value="">&#45;&#45; Select Your Departure AirPort &#45;&#45;</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Abuja">Abuja</option>
+                <option value="Ilorin">Ilorin</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="USA">USA</option>
+                <option value="Mecca">Mecca</option>
+                <option value="Kano">Kano</option>
+            </select>
+
+            <select type="text"  class="form-controls" placeholder="Arrival Airport"name="destinationPoint" id="so" required>
+                <option value="">&#45;&#45; Select Your Arrival AirPort &#45;&#45;</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Abuja">Abuja</option>
+                <option value="Ilorin">Ilorin</option>
+                <option value="New York">New York</option>
+                <option value="London">London</option>
+                <option value="USA">USA</option>
+                <option value="Bauchi">Bauchi</option>
+                <option value="London">London</option>
+                </select>
+            <input type="date" class="form-controls" placeholder="Date" name="departure" id="so" required>
+            <button type="submit"class="cos" > Search </button>
+        </form>
+    </div>
+
+    <div id="Paris" class="tabcontent">
+
+    </div>
+
+    <div id="Tokyo" class="tabcontent">
+
+    </div>
+
+    <div id="Abuja" class="tabcontent">
+        <!-- <div id="terms">
+          <input type="radio" name="">True
+          <input type="radio" name="">False
+        </div>      -->
+        <form th:action="${'/flights/availableFlights'}" method="get" class="no">
+            <input type="text"  class="form-controls" placeholder="Depature AirPort" name="takeOffPoint" id="so"  required >
+            <input type="text"  class="form-controls" placeholder="Arrival Airport" name="destinationPoint" id="so" required>
+            <input type="Date"  class="form-controls" placeholder="Date" name="departure" id="so" required>
+            <button type="submit"class="cos" > Search </button>
+        </form>
+    </div>
+</div>
+
+<h1 class="head">Sirs Airlines Ready To Fly</h1>
+
+<!--<h2> Welcome to Sirs-Airlines </h2>-->
+
+<!--<h3>Flight Search</h3>-->
+
+<!--<form th:action="${'/flights/availableFlights'}" method="get">-->
+
+    <!--<div>
+        <label for="takeOffPoint">From</label>
+        <select name="takeOffPoint" id="takeOffPoint" required>
+            <option value="">&#45;&#45; Select State&#45;&#45;</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Abuja">Abuja</option>
+            <option value="Ilorin">Ilorin</option>
+            <option value="New York">New York</option>
+            <option value="London">London</option>
+            <option value="USA">USA</option>
+            <option value="Mecca">Mecca</option>
+            <option value="Kano">Kano</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="destinationPoint">To</label>
+        <select name="destinationPoint" id="destinationPoint" required>
+            <option value="">&#45;&#45; Select State&#45;&#45;</option>
+            <option value="Lagos">Lagos</option>
+            <option value="Abuja">Abuja</option>
+            <option value="Ilorin">Ilorin</option>
+            <option value="New York">New York</option>
+            <option value="London">London</option>
+            <option value="USA">USA</option>
+            <option value="Bauchi">Bauchi</option>
+            <option value="London">London</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="departure">Departure</label>
+        <input type="date" name="" id="departure" required>
+    </div>
+
+    <div>
+        <input type="submit" value="Search Flight">
+    </div>
+</form>-->
+
+
+<!--<p class="bg">Travel Support</p>-->
+
+<!--<h2 class="bf">Plan Your Flight with Confidence</h2>-->
+
+<!--<p class="bs"> Find help with your bookings and travel plans, and see what to expect along your journey</p>-->
+<!--<div class="do">-->
+<!--    <h1 class="head">Sirs Airlines Ready To Fly</h1>-->
+
+<!--    <p class="bg">Travel Support</p>-->
+
+<!--    <h2 class="bf">Plan Your Flight with Confidence</h2>-->
+
+<!--    <p class="bs"> Find help with your bookings and travel plans, and see what to expect along your journey</p>-->
+<!--</div>-->
+
+<div>
+    <hr>
+    <div class="eim">
+        <img th:src="@{/images/airline.jpg}" alt="home" id="ans">
+    </div>
+    <hr>
+    <h2 class="sss"> Sirs-Airlines </h2>
+    <p class="ttt"> Always Ready To Fly</p>
+    <hr>
+    <div class="mie">
+        <img th:src="@{/images/ZA_Essential_Travel_Homepages .jpg}" alt="home" id="ans">
+    </div>
+
+</div>
+
+
+</body>
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+</html>

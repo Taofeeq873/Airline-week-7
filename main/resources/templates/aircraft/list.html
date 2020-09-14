@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        table {
+            padding-top: 40px;
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+        }
+        th, td {
+            text-align: left;
+            padding: 8px;
+        }
+        tr:nth-child(even){
+            background-color: #f2f2f2;
+            height:50px;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        th {
+            background-color: royalblue;
+            color: white;
+            height:50px;
+        }
+        input[type=submit], button{
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <a href="#" class="nav"><b> Sirs-Arlines </b></a>
+</nav>
+<h2> List Of Sirs Aircraft </h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>RegistrationNumber</th>
+        <th>Capacity</th>
+        <th>Type</th>
+    </tr>
+    <tr th:each="row : *{aircrafts}">
+        <td th:text="${row.getId()}"></td>
+        <td th:text="${row.getName()}"></td>
+        <td th:text="${row.getRegistrationNumber()}"></td>
+        <td th:text="${row.getCapacity()}"></td>
+        <td th:text="${row.getType()}"></td>
+        <td><a th:href="@{/aircrafts/edit/{id}(id=${row.getId()})}">Edit</a> </td> | <td> <a th:href="@{/aircrafts/delete/{id}(id=${row.getId()})}">Remove</a></td> | <td> <a th:href="@{/flights/create/{id}(id=${row.getId()})}">Create Flights</a></td>
+    </tr>
+</table>
+<!--<p th:text="${message}"></p>-->
+</body>
+</html>

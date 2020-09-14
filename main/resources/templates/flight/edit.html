@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #d3d3d3;
+            margin: 0;
+            padding: 0;
+        }
+        nav{
+            background: royalblue;
+            width: 1340px;
+            padding: 15px;
+            font-variant: small-caps;
+            text-align: center;
+        }
+        nav .nav{
+            color: #f2f2f2;
+            text-decoration: none;
+        }
+        form{
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 500px;
+            padding-right: 0px;
+        }
+        h2{
+            text-align: center;
+            font-variant: small-caps;
+        }
+        input[type=text],[type=number], select, [type=datetime-local] {
+            width:50%;
+            padding: 15px 20px;
+            margin: 15px 0;
+            display: block;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+
+        }
+        label{
+            font-variant: small-caps;
+            font-size: medium;
+        }
+        input[type=submit] {
+            width: 10%;
+            background-color: royalblue;
+            color: white;
+            padding: 14px 20px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<nav class="nav">
+    <a href="#" class="nav"><b> Sirs-Arlines </b></a>
+</nav>
+<h2> Edit Flight </h2>
+<form th:object="${flight}" th:action="${'/flights/update'}"  method="post">
+
+    <input type="hidden" name="id" th:field="*{id}">
+
+    <div>
+        <label>Flight Number:</label>
+        <input type="text"  th:field="*{flightNumber}" placeholder="Flight number" name="flightNumber" required/>
+    </div>
+
+    <input type="hidden" class="form-control" th:field="*{aircraft}" name="aircraft" required/>
+
+    <div>
+        <label>TakeOff Time:</label>
+        <input type="datetime-local" th:field="*{takeOffTime}" placeholder="TakeOff Time" name="takeOffTime" required/>
+    </div>
+
+    <div>
+        <label>Landing Time:</label>
+        <input type="datetime-local" th:field="*{landingTime}" placeholder="Landing Time" name="landingTime" required/>
+    </div>
+
+    <div>
+        <label>TakeOff Point:</label>
+        <input type="text" th:field="*{takeOffPoint}" placeholder="TakeOff Point" name="takeOffPoint" required/>
+    </div>
+
+    <div>
+        <label>Destination:</label>
+        <input type="text" th:field="*{destinationPoint}" placeholder="Destination" name="destinationPoint" required/>
+    </div>
+
+    <div>
+        <label>Price:</label>
+        <input type="number" th:field="*{price}" placeholder="Price" name="price" required/>
+    </div>
+
+    <div>
+        <label>availableSeats:</label>
+        <input type="number" th:field="*{availableSeat}" placeholder="availableSeats" name="availableSeats" required/>
+    </div>
+
+    <div>
+        <input type="submit" name="saveFlights" id="saveFlights">
+    </div>
+
+</form>
+</body>
+</html>
